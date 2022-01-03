@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"sin.semestral_work"},{"l":"sin.semestral_work.dao"},{"l":"sin.semestral_work.dto"},{"l":"sin.semestral_work.interceptor"},{"l":"sin.semestral_work.model"},{"l":"sin.semestral_work.rest"},{"l":"sin.semestral_work.service"}]

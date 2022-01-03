@@ -1,0 +1,114 @@
+digraph domain {
+  edge [ fontsize = 11 ];
+  node [ shape=record ];
+  subgraph cluster_0 {
+    label = "sin.semestral_work.dto";
+    BookPublicationDTO [ label = "{BookPublicationDTO | + getBook() : Book\l+ getBooks() : List<PublishedBook>\l+ getDateOfPublishing() : Date\l+ getISBN() : Integer\l+ getPublishingHouse() : PublishingHouse\l+ setBook(book : Book)\l+ setBooks(books : List<PublishedBook>)\l+ setDateOfPublishing(dateOfPublishing : Date)\l+ setISBN(ISBN : Integer)\l+ setPublishingHouse(publishingHouse : PublishingHouse)\l}" ] 
+    ContractDTO [ label = "{ContractDTO | + getAuthors() : List<Author>\l+ getEndDate() : Date\l+ getId() : Integer\l+ getPublishingHouse() : PublishingHouse\l+ setAuthors(authors : List<Author>)\l+ setEndDate(endDate : Date)\l+ setId(id : Integer)\l+ setPublishingHouse(publishingHouse : PublishingHouse)\l}" ] 
+    GenreDTO [ label = "{GenreDTO | + getDescription() : String\l+ getName() : String\l+ setDescription(description : String)\l+ setName(name : String)\l}" ] 
+    LibraryDTO [ label = "{LibraryDTO | + getAddress() : String\l+ getBooks() : List<PublishedBook>\l+ getId() : Integer\l+ getName() : String\l+ setAddress(address : String)\l+ setBooks(books : List<PublishedBook>)\l+ setId(id : Integer)\l+ setName(name : String)\l}" ] 
+  }
+  subgraph cluster_1 {
+    label = "sin.semestral_work";
+    Builder [ label = "{Builder | + build()\l+ createAuthors(count : int) : List<Author>\l+ createBooks(count : int) : List<Book>\l+ createGenres(count : int) : List<Genre>\l+ createLibraries(count : int) : List<Library>\l+ createPublishingHouses(count : int) : List<PublishingHouse>\l}" ] 
+    Config [ label = "{Config | + addInterceptors(registry : InterceptorRegistry)\l+ addResourceHandlers(registry : ResourceHandlerRegistry)\l+ api() : Docket\l}" ] 
+    DataLoader [ label = "{DataLoader | + run(args : ApplicationArguments)\l}" ] 
+    SemestralWorkApplication [ label = "{SemestralWorkApplication | + main(args : String[])\l}" ] 
+  }
+  subgraph cluster_2 {
+    label = "sin.semestral_work.model";
+    AbstractEntity [ label = "{AbstractEntity | + getId() : Integer\l+ setId(id : Integer)\l}" ] 
+    Author [ label = "{Author | + addBook(book : Book)\l+ addContract(contract : Contract)\l+ getBooks() : List<Book>\l+ getContracts() : List<Contract>\l+ getEmail() : String\l+ getFirstName() : String\l+ getLastName() : String\l+ removeBook(book : Book)\l+ removeContract(contract : Contract)\l+ setBooks(books : List<Book>)\l+ setContracts(contracts : List<Contract>)\l+ setEmail(email : String)\l+ setFirstName(firstName : String)\l+ setLastName(lastName : String)\l+ toString() : String\l}" ] 
+    Book [ label = "{Book | + addAuthor(author : Author)\l+ addPublication(bookPublication : BookPublication)\l+ getAuthors() : List<Author>\l+ getGenre() : Genre\l+ getName() : String\l+ getPublications() : List<BookPublication>\l+ removeAuthor(author : Author)\l+ removePublication(bookPublication : BookPublication)\l+ setAuthors(authors : List<Author>)\l+ setGenre(genre : Genre)\l+ setName(name : String)\l+ setPublications(publications : List<BookPublication>)\l+ toString() : String\l}" ] 
+    BookPublication [ label = "{BookPublication | + addBook(book : PublishedBook)\l+ getBook() : Book\l+ getBooks() : List<PublishedBook>\l+ getDateOfPublishing() : Date\l+ getISBN() : Integer\l+ getPublishingHouse() : PublishingHouse\l+ removeBook(book : PublishedBook)\l+ setBook(book : Book)\l+ setBooks(books : List<PublishedBook>)\l+ setDateOfPublishing(dateOfPublishing : Date)\l+ setISBN(ISBN : Integer)\l+ setPublishingHouse(publishingHouse : PublishingHouse)\l+ toString() : String\l}" ] 
+    Contract [ label = "{Contract | + addAuthor(author : Author)\l+ getAuthors() : List<Author>\l+ getEndDate() : Date\l+ getPublishingHouse() : PublishingHouse\l+ getStartDate() : Date\l+ removeAuthor(author : Author)\l+ setAuthors(authors : List<Author>)\l+ setEndDate(endDate : Date)\l+ setPublishingHouse(publishingHouse : PublishingHouse)\l+ setStartDate(startDate : Date)\l+ toString() : String\l}" ] 
+    Genre [ label = "{Genre | + getDescription() : String\l+ getName() : String\l+ setDescription(description : String)\l+ setName(name : String)\l+ toString() : String\l}" ] 
+    Library [ label = "{Library | + addBook(book : PublishedBook)\l+ getAddress() : String\l+ getBooks() : List<PublishedBook>\l+ getName() : String\l+ removeBook(book : PublishedBook)\l+ setAddress(address : String)\l+ setBooks(books : List<PublishedBook>)\l+ setName(name : String)\l+ toString() : String\l}" ] 
+    PublishedBook [ label = "{PublishedBook | + getBookPublication() : BookPublication\l+ getLibrary() : Library\l+ setBookPublication(bookPublication : BookPublication)\l+ setLibrary(library : Library)\l+ toString() : String\l}" ] 
+    PublishingHouse [ label = "{PublishingHouse | + addContract(contract : Contract)\l+ addPublication(bookPublication : BookPublication)\l+ getAddress() : String\l+ getContracts() : List<Contract>\l+ getName() : String\l+ getPublications() : List<BookPublication>\l+ hasContract(authors : List<Author>) : boolean\l+ removeContract(contract : Contract)\l+ removePublication(bookPublication : BookPublication)\l+ setAddress(address : String)\l+ setContracts(contracts : List<Contract>)\l+ setName(name : String)\l+ setPublications(publications : List<BookPublication>)\l+ toString() : String\l}" ] 
+  }
+  subgraph cluster_3 {
+    label = "sin.semestral_work.rest";
+    BookPublicationController [ label = "{BookPublicationController | + createBookPublication(bookPublicationDTO : BookPublicationDTO) : BookPublicationDTO\l+ findByBookAndPublishingHouse(bookPublicationDTO : BookPublicationDTO) : BookPublicationDTO\l}" ] 
+    ContractController [ label = "{ContractController | + createContract(contractDTO : ContractDTO) : ContractDTO\l+ getContracts() : List<ContractDTO>\l}" ] 
+    GenreController [ label = "{GenreController | + addGenre(genreDTO : GenreDTO) : GenreDTO\l+ updateGenre(genreDTO : GenreDTO)\l}" ] 
+    HelloController [ label = "{HelloController | + hello() : String\l}" ] 
+    LibraryController [ label = "{LibraryController | + addBook(libraryId : Integer, bookId : Integer)\l+ createLibrary(libraryDTO : LibraryDTO) : LibraryDTO\l+ deleteLibrary(libraryId : Integer) : LibraryDTO\l+ getLibraries() : List<LibraryDTO>\l+ getLibrary(libraryId : Integer) : LibraryDTO\l+ removeBook(libraryId : Integer, bookId : Integer)\l}" ] 
+  }
+  subgraph cluster_4 {
+    label = "sin.semestral_work.interceptor";
+    Interceptor [ label = "{Interceptor | + afterCompletion(request : HttpServletRequest, response : HttpServletResponse, handler : Object, exception : Exception)\l+ postHandle(request : HttpServletRequest, response : HttpServletResponse, handler : Object, modelAndView : ModelAndView)\l+ preHandle(request : HttpServletRequest, response : HttpServletResponse, handler : Object) : boolean\l}" ] 
+  }
+  subgraph cluster_5 {
+    label = "sin.semestral_work.service";
+    BookPublicationService [ label = "{BookPublicationService | + createBookPublication(book : Book, publishingHouse : PublishingHouse) : BookPublicationDTO\l+ findByBookAndPublishingHouse(book : Book, publishingHouse : PublishingHouse) : BookPublicationDTO\l}" ] 
+    BookService [ label = "{BookService | + createBook(name : String, genre : Genre, authors : List<Author>) : Book\l+ updateGenre(book : Book, genre : Genre)\l}" ] 
+    ContractService [ label = "{ContractService | + createContract(authors : List<Author>, publishingHouse : PublishingHouse, endDate : Date) : ContractDTO\l+ getContracts() : List<ContractDTO>\l}" ] 
+    GenreService [ label = "{GenreService | + addGenre(name : String, description : String) : GenreDTO\l+ updateGenre(name : String, description : String)\l}" ] 
+    LibraryService [ label = "{LibraryService | + addBook(libraryId : Integer, bookId : Integer)\l+ createLibrary(name : String, address : String) : LibraryDTO\l+ deleteLibrary(libraryId : Integer) : LibraryDTO\l+ getLibraries() : List<LibraryDTO>\l+ getLibrary(libraryId : Integer) : LibraryDTO\l+ removeBook(libraryId : Integer, bookId : Integer)\l}" ] 
+    PublishedBookService [ label = "{PublishedBookService | + createBook(bookPublication : BookPublication) : PublishedBook\l+ deleteBook(book : PublishedBook)\l}" ] 
+  }
+  subgraph cluster_6 {
+    label = "sin.semestral_work.dao";
+    AuthorDao [ label = "{AuthorDao | }" ] 
+    BookDao [ label = "{BookDao | }" ] 
+    BookPublicationDao [ label = "{BookPublicationDao | + exists(ISBN : String) : boolean\l+ find(ISBN : String) : BookPublication\l+ findByBookAndPublishingHouse(book : Book, publishingHouse : PublishingHouse) : BookPublication\l}" ] 
+    ContractDao [ label = "{ContractDao | }" ] 
+    GenericDao [ label = "{GenericDao | + exists(Integer) : boolean\l+ find(Integer) : T\l+ findAll() : List<T>\l+ persist(Collection<T>)\l+ persist(T)\l+ remove(T)\l+ update(T) : T\l}" ] 
+    GenericDaoImpl [ label = "{GenericDaoImpl | + exists(id : Integer) : boolean\l+ find(id : Integer) : T\l+ findAll() : List<T>\l+ flush()\l+ persist(entities : Collection<T>)\l+ persist(entity : T)\l+ remove(entity : T)\l+ update(entity : T) : T\l}" ] 
+    GenreDao [ label = "{GenreDao | + exists(name : String) : boolean\l+ find(name : String) : Genre\l}" ] 
+    LibraryDao [ label = "{LibraryDao | }" ] 
+    PublishedBookDao [ label = "{PublishedBookDao | }" ] 
+    PublishingHouseDao [ label = "{PublishingHouseDao | }" ] 
+  }
+  PublishedBookService -> PublishedBookDao [ dir=back arrowtail=odiamond color=slategray];
+  LibraryController -> LibraryService [ dir=back arrowtail=odiamond color=slategray];
+  Book -> Genre [ dir=back arrowtail=odiamond color=slategray];
+  Builder -> PublishedBookDao [ dir=back arrowtail=odiamond color=slategray];
+  BookPublicationDTO -> PublishingHouse [ dir=back arrowtail=odiamond color=slategray];
+  BookService -> BookDao [ dir=back arrowtail=odiamond color=slategray];
+  BookPublicationService -> BookPublicationDao [ dir=back arrowtail=odiamond color=slategray];
+  ContractDTO -> PublishingHouse [ dir=back arrowtail=odiamond color=slategray];
+  Builder -> GenreDao [ dir=back arrowtail=odiamond color=slategray];
+  LibraryService -> PublishedBookDao [ dir=back arrowtail=odiamond color=slategray];
+  Builder -> BookDao [ dir=back arrowtail=odiamond color=slategray];
+  BookPublicationDTO -> Book [ dir=back arrowtail=odiamond color=slategray];
+  Builder -> AuthorDao [ dir=back arrowtail=odiamond color=slategray];
+  ContractDTO -> Author [ dir=back arrowtail=odiamond color=slategray];
+  GenreController -> GenreService [ dir=back arrowtail=odiamond color=slategray];
+  Config -> Interceptor [ dir=back arrowtail=odiamond color=slategray];
+  DataLoader -> Builder [ dir=back arrowtail=odiamond color=slategray];
+  LibraryService -> LibraryDao [ dir=back arrowtail=odiamond color=slategray];
+  LibraryDTO -> PublishedBook [ dir=back arrowtail=odiamond color=slategray];
+  Builder -> PublishingHouseDao [ dir=back arrowtail=odiamond color=slategray];
+  ContractService -> ContractDao [ dir=back arrowtail=odiamond color=slategray];
+  Builder -> ContractDao [ dir=back arrowtail=odiamond color=slategray];
+  Builder -> BookPublicationDao [ dir=back arrowtail=odiamond color=slategray];
+  GenreService -> GenreDao [ dir=back arrowtail=odiamond color=slategray];
+  BookPublicationController -> BookPublicationService [ dir=back arrowtail=odiamond color=slategray];
+  Builder -> LibraryDao [ dir=back arrowtail=odiamond color=slategray];
+  BookPublicationDTO -> PublishedBook [ dir=back arrowtail=odiamond color=slategray];
+  ContractController -> ContractService [ dir=back arrowtail=odiamond color=slategray];
+  Author -> Contract [ dir=both arrowhead=none arrowtail=none color=slategray];
+  BookPublication -> PublishingHouse [ dir=both arrowhead=none arrowtail=none color=slategray];
+  PublishedBook -> Library [ dir=both arrowhead=none arrowtail=none color=slategray];
+  BookPublication -> Book [ dir=both arrowhead=none arrowtail=none color=slategray];
+  PublishingHouse -> Contract [ dir=both arrowhead=none arrowtail=none color=slategray];
+  PublishedBook -> BookPublication [ dir=both arrowhead=none arrowtail=none color=slategray];
+  Book -> Author [ dir=both arrowhead=none arrowtail=none color=slategray];
+  AuthorDao -> GenericDaoImpl [arrowhead=empty color=slategray];
+  BookDao -> GenericDaoImpl [arrowhead=empty color=slategray];
+  BookPublicationDao -> GenericDaoImpl [arrowhead=empty color=slategray];
+  ContractDao -> GenericDaoImpl [arrowhead=empty color=slategray];
+  GenericDaoImpl -> GenericDao [arrowhead=empty color=slategray];
+  GenreDao -> GenericDaoImpl [arrowhead=empty color=slategray];
+  LibraryDao -> GenericDaoImpl [arrowhead=empty color=slategray];
+  PublishedBookDao -> GenericDaoImpl [arrowhead=empty color=slategray];
+  PublishingHouseDao -> GenericDaoImpl [arrowhead=empty color=slategray];
+  Author -> AbstractEntity [arrowhead=empty color=slategray];
+  Book -> AbstractEntity [arrowhead=empty color=slategray];
+  Contract -> AbstractEntity [arrowhead=empty color=slategray];
+  Library -> AbstractEntity [arrowhead=empty color=slategray];
+  PublishedBook -> AbstractEntity [arrowhead=empty color=slategray];
+  PublishingHouse -> AbstractEntity [arrowhead=empty color=slategray];
+}
