@@ -1,4 +1,4 @@
-database url: http://localhost:8090/h2-console/login.jsp
+Database URL: http://localhost:8090/h2-console/login.jsp
 
 UnitTests
 
@@ -12,11 +12,13 @@ Patterns
 - extension object
 - DAO
 
-package diagram
+Package Diagram
 
 Spotbugs
 
 SpringFox - swagger (http://localhost:8090/swagger-ui/)
+
+Actuator (http://localhost:8090/actuator)
 
 JavaDoc
 
